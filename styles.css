@@ -1,0 +1,77 @@
+body {
+    /* padding: 5% 0; */
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+    text-align: center;
+    background: linear-gradient(225deg, #e66465, #6c73c0);
+    /* background-size: 100%; */
+    background-repeat: no-repeat;
+    font-family: 'STIX Two Math', serif;
+}
+
+.wrapper {
+    max-width: 1200px;
+    width: 85%;
+    margin: 0 auto;
+    display: flex;
+}
+
+
+div{
+    /* padding: 10% 0; */
+    width: 70%;
+    /* text-align: center; */
+}
+
+#quiz{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+/*     justify-content: space-around; need more vertical space*/
+    align-items: center;
+}
+
+#quiz #question{
+    border: blue 2px dashed;
+    height: 100px;
+} 
+
+/* div .answers{
+  border: 2px solid darkgreen;
+  display: flex;
+  flex-wrap: wrap;
+    flex-direction: row;
+}
+
+#quiz .answer {
+    border: salmon 2px dashed;
+    height: 50px;
+    width: 50px;
+    display: flex;
+    flex-wrap: wrap;
+} */
+
+
+/* https://codepen.io/fabiobiondi/pen/PqeWGv */
+.grid2x2 {
+    min-height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+  .grid2x2 > div {
+    display: flex; 
+    flex-basis: calc(50% - 40px);  
+    justify-content: center;
+    flex-direction: column;
+  }
+  .grid2x2 > div > div {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+  }
+  
+
+  .box { margin: 20px; 
+background-color: rgba(0,0,0,.2);}
