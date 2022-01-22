@@ -1,8 +1,25 @@
 // submit user's choice to API, eg 12 questions, History category, hard questions etc
-$('input[type=submit]').on('click', function (event) {
+$('#settings input[type=submit]').on('click', function (event) {
   event.preventDefault();
-  getQuizArrayAndStart();
+  $('#settings').hide()
+  $('.overlay').css('z-index', -100)
+  $('.overlay').css('background-color', 'rgba(0,0,0,0')
+  $('.settings').css('z-index', -100)
+  
+  // wait so they can see simpsons reference
+  setTimeout(() => {
+    getQuizArrayAndStart();
+  }, 500);
+  
 })
+
+
+$('.playAgain').on('click', function (event) {
+  event.preventDefault();
+  $('#replay').hide()
+  $('#settings').show()
+})
+
 
 
 // turn click event for answer boxes on or off (want off at certain times b/c clicking on answer box twice or more will trigger displayQuestion twice in quick succession and skips over question(s))
@@ -21,7 +38,11 @@ function displayQuestion() {
 
   // if theres no question object left in the JSON object, stop the quiz
   if (entireQuizArray.length === 0) {
-    alert('quiz done');
+    
+    $('.overlay').css('z-index', 100)
+    $('.overlay').css('background-color', 'rgba(0,0,0,0.4')
+    $('.settings').css('z-index', 100)
+    $('#replay').show()
 
   } else{
 

@@ -6,76 +6,112 @@ body {
     text-align: center;
     background: linear-gradient(225deg, #e66465, #6c73c0);
     /* background-size: 100%; */
+    box-sizing: border-box;
     background-repeat: no-repeat;
     font-family: 'STIX Two Math', serif;
 }
 
 .wrapper {
-    max-width: 1200px;
+    max-width: 800px;
     width: 85%;
     margin: 0 auto;
-    display: flex;
 }
 
-
-div{
-    /* padding: 10% 0; */
-    width: 70%;
-    /* text-align: center; */
-}
 
 #quiz{
-    text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+    /* text-align: center;
     display: flex;
     flex-direction: column;
 /*     justify-content: space-around; need more vertical space*/
-    align-items: center;
+    /* align-items: center; */
 }
 
 #quiz #question{
-    border: blue 2px dashed;
-    height: 100px;
+  background-color: salmon;
+  border: 2px solid plum;
+  border-radius: 10px;
+    padding: 30px 20px;
 } 
 
-/* div .answers{
-  border: 2px solid darkgreen;
+.settings,
+.replay{
+  background-color: salmon;
+  border: 2px solid plum;
+  border-radius: 5px;
+
   display: flex;
-  flex-wrap: wrap;
-    flex-direction: row;
+  justify-content: space-around;
+  position: fixed;
+  margin: 0 auto ;
+  top: 25%;
+  padding: 15px;
+  z-index: 100;
+
+  /* centering the settings and replay popup div */
+  left: 50%;
+    transform: translate(-50%, 0);
 }
 
-#quiz .answer {
-    border: salmon 2px dashed;
-    height: 50px;
-    width: 50px;
-    display: flex;
-    flex-wrap: wrap;
-} */
+.overlay{
+  position:fixed;
+    z-index:100;
+    width:100vw;
+    height:100vh;
+    background-color:rgba(0,0,0,.4)
+}
 
+.replay{
+  padding: 35px 20px;
+  display: flex;
+  display: none;
+  flex-wrap: wrap;
+  min-width: 280px;
+}
 
-/* https://codepen.io/fabiobiondi/pen/PqeWGv */
-.grid2x2 {
-    min-height: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-  }
-  .grid2x2 > div {
-    display: flex; 
-    flex-basis: calc(50% - 40px);  
-    justify-content: center;
-    flex-direction: column;
-  }
-  .grid2x2 > div > div {
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-  }
+.replay h2{
+  width: 100%;
+}
+
+.replay button{
+  width: 125px;
+}
+
+.box,
+button { 
+  border-radius: 10px;
+  padding: 30px 15px; 
+  margin: 10px 0;
+  /* margin: 20px 1%; */
   
 
-  .box { margin: 20px; 
-background-color: rgba(0,0,0,.2);}
+  background-color: plum;
+  border: 2px solid salmon;
+  border-radius: 5px;
+  /* width: 45%; */
+}
 
+.box{
+  width: 45%;
+}
+
+.answerContainer{
+  margin-top: 25px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+@media (max-width: 665px) {
+  
+  .box{
+    width: 100%;
+  }
+}
 
 .wrong{
   background-color: rgba(255, 0, 0, 0.514);
