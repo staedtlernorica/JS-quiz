@@ -10,7 +10,6 @@ $('#settings input[type=submit]').on('click', function (event) {
   setTimeout(() => {
     getQuizArrayAndStart();
   }, 500);
-  
 })
 
 
@@ -37,6 +36,8 @@ function displayQuestion() {
   
 
   // if theres no question object left in the JSON object, stop the quiz
+  // make replay array visible; play again or view score
+  // make entire screen/overlay dark to focus on popup div
   if (entireQuizArray.length === 0) {
     
     $('.overlay').css('z-index', 100)
