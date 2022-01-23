@@ -47,9 +47,9 @@ function displayQuestion() {
 
   } else{
 
-    // $('#question').text(entireQuizArray[0].question)
+    // window.atob() converts base64 to normal text
     $('#question').empty()
-    $('#question').append($("<h2>").text(entireQuizArray[0].question));
+    $('#question').append($("<h2>").text(window.atob(entireQuizArray[0].question)));
 
     // combine wrong answer(s) and right answer into allAnswers array, then need to shuffle with .sort() or the correct answer will always be the last one/the 4th box
     const correctAnswer = entireQuizArray[0].correct_answer;
@@ -72,7 +72,7 @@ function displayQuestion() {
 
     // apply answers strings to boxes
     for (i = 0; i < allAnswers.length; i++) {
-      $(`.box${i}`).text(allAnswers[i]);
+      $(`.box${i}`).text(window.atob(allAnswers[i]));
     }
   
     // now allow boxes to be clicked for evaluating
@@ -116,6 +116,8 @@ function getQuizArrayAndStart() {
       category: $('select[name=trivia_category]').val(),     //9 to 32
       difficulty: $('select[name=trivia_difficulty]').val(), //easy, medium or hard
       type: $('select[name=trivia_type]').val(),             //multiple or boolean
+
+      // base64 gets rid of HTML special entities encoding error
       encode: 'base64'      //base64, url3986, '' = default encoding
 
     }
