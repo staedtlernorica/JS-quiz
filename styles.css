@@ -1,20 +1,43 @@
+html{line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,footer,header,nav,section{display:block}h1{font-size:2em;margin:.67em 0}figcaption,figure,main{display:block}figure{margin:1em 40px}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace,monospace;font-size:1em}a{background-color:transparent;-webkit-text-decoration-skip:objects}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:inherit}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:1em}dfn{font-style:italic}mark{background-color:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}audio,video{display:inline-block}audio:not([controls]){display:none;height:0}img{border-style:none}svg:not(:root){overflow:hidden}button,input,optgroup,select,textarea{font-family:sans-serif;font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}button,select{text-transform:none}button,html [type=button],[type=reset],[type=submit]{-webkit-appearance:button}button::-moz-focus-inner,[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner{border-style:none;padding:0}button:-moz-focusring,[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring{outline:1px dotted ButtonText}fieldset{padding:.35em .75em .625em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}progress{display:inline-block;vertical-align:baseline}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-cancel-button,[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}details,menu{display:block}summary{display:list-item}canvas{display:inline-block}template{display:none}[hidden]{display:none}
+
+* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+
+.clearfix:after {visibility: hidden; display: block; font-size: 0; content: ''; clear: both; height: 0; }
+
+.sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; border: 0; padding: 0; white-space: nowrap; clip-path: inset(100%); clip: rect(0 0 0 0); overflow: hidden;}
+
+
+/* =======================SETUP============================= */
+
+
 body {
     /* padding: 5% 0; */
-    padding: 0;
+    padding: 0 0 100px 0;
     margin: 0;
-    height: 100vh;
+    min-height: 100vh;
     text-align: center;
     background: linear-gradient(225deg, #e66465, #6c73c0);
     /* background-size: 100%; */
     box-sizing: border-box;
     background-repeat: no-repeat;
-    font-family: 'STIX Two Math', serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 .wrapper {
     max-width: 800px;
     width: 85%;
     margin: 0 auto;
+}
+
+h1,
+h2{
+  font-size: 2rem;
+  font-family: 'Lora', serif;
+}
+
+h2{
+  font-size: 1.25rem;
+  font-weight: normal;
 }
 
 
@@ -61,7 +84,42 @@ body {
     z-index:100;
     width:100vw;
     height:100vh;
-    background-color:rgba(0,0,0,.4)
+    background-color:rgba(0,0,0,0.7)
+}
+
+form{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+form input,
+form button,
+form select{
+  margin: 2px 0 20px;
+  border: 2px solid grey;
+  border-radius: 5px;
+  padding: 5px;
+  font: 1rem;
+}
+
+form input[type=number]{
+  width: 60px;
+  height: 32px;
+}
+
+a{
+  color: black;
+  text-decoration: none;
+  font-style: italic;
+}
+
+form button[type=submit]{
+  margin-top: 35px;
+  align-self: center;
+  padding: 20px 15px;
+  background-color: navajowhite;
+  border-color: cornflowerblue;
 }
 
 .replay{
@@ -77,25 +135,46 @@ body {
 }
 
 .replay button{
-  width: 125px;
+  width: 150px;
 }
 
-.box,
+/* .box, */
 button { 
   border-radius: 10px;
   padding: 30px 15px; 
   margin: 10px 0;
   /* margin: 20px 1%; */
   
-
+  font-size: 1.1rem;
+  font-weight: 500;
+  border: 2px solid plum;
   background-color: plum;
-  border: 2px solid salmon;
+  /* border: none; */
   border-radius: 5px;
   /* width: 45%; */
+  transition: transform 0.5s linear, box-shadow 0.15s ease-in;
+  cursor: pointer;
+}
+
+button:hover {
+  /* border: 2px solid red; */
+  /* border-color: salmon; */
+  box-shadow: 2px 3px #666;
+}
+
+button:active {
+  box-shadow: 3px 4px #666;
+  transform: translateY(6px);
 }
 
 .box{
   width: 45%;
+  white-space: wrap;
+
+  /* solve one super long continuous string overflowing */
+  /* https://css-tricks.com/snippets/css/prevent-long-urls-from-breaking-out-of-container/ */
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 .answerContainer{
@@ -114,10 +193,10 @@ button {
 }
 
 .wrong{
-  background-color: rgba(255, 0, 0, 0.514);
+  background-color: rgb(185, 37, 37);
 }
 
 .right{
-  background-color: rgba(0, 255, 0, 0.651);
+  background-color: rgb(37, 117, 37);
 
 }

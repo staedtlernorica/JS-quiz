@@ -4,11 +4,14 @@
 
 <head>
     <meta charset="UTF-8">
-    <!--     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz Time!</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=STIX+Two+Math&amp;display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;700&amp;family=Roboto:wght@100;300;400;500&amp;display=swap"
+        rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
@@ -25,7 +28,7 @@
             <div id="settings" class="settings">
 
                 <form action="">
-                    <label for="trivia_amount">Number of Questions:</label>
+                    <label for="trivia_amount">Number of Questions: (max 50)</label>
                     <input type="number" name="trivia_amount" id="trivia_amount" class="form-control" min="1" max="50"
                         value="10">
 
@@ -72,7 +75,7 @@
 
                     <br>
 
-                    <label for="trivia_type">Select Type: </label>
+                    <label for="trivia_type">Select Type: (Multiple choice, T/F, Both) </label>
                     <select name="trivia_type" class="form-control">&gt;
                         <option value="">Any Type</option>
                         <option value="multiple">Multiple Choice</option>
@@ -82,7 +85,8 @@
                     <br>
                     <br>
 
-                    <input type="submit" value="Click Here To Start Playing">
+                    <!-- <input type="submit" value="Click Here To Start Playing"> -->
+                    <button type="submit">Click Here To Start Playing</button>
                 </form>
 
             </div>
@@ -115,10 +119,20 @@
                     <div>four</div>
                 </div> -->
 
-                <button class="box box0">Pride?</button>
-                <button class="box box1">No, not that far from shame</button>
-                <button class="box box2">Less shame?</button>
-                <button class="box box3">Yeaaa</button>
+                <button class="box box0">
+                    <a href="https://www.youtube.com/watch?v=4lb0QjJ6tEY" target="_blank"
+                        rel="noopener noreferrer">Pride?</a>
+                </button>
+                <button class="box box1">
+                    <a href="https://www.youtube.com/watch?v=unqU0ndCW84" target="_blank" rel="noopener noreferrer">No,
+                        not that far from shame</a>
+                </button>
+                <button class="box box2">
+                    <a href="https://www.youtube.com/watch?v=KA7Wmlnziuc" target="_blank" rel="noopener noreferrer">Less shame?</a>
+                </button>
+                <button class="box box3">
+                    <a href="https://www.youtube.com/watch?v=RLTI9bja4So" target="_blank" rel="noopener noreferrer">Yeaaa</a>
+                </button>
             </div>
 
         </div>
