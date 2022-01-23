@@ -12,9 +12,9 @@ html{line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}bo
 
 body {
     /* padding: 5% 0; */
-    padding: 0;
+    padding: 0 0 100px 0;
     margin: 0;
-    height: 100vh;
+    min-height: 100vh;
     text-align: center;
     background: linear-gradient(225deg, #e66465, #6c73c0);
     /* background-size: 100%; */
@@ -94,6 +94,7 @@ form{
 }
 
 form input,
+form button,
 form select{
   margin: 2px 0 20px;
   border: 2px solid grey;
@@ -104,9 +105,16 @@ form select{
 
 form input[type=number]{
   width: 60px;
+  height: 32px;
 }
 
-form input[type=submit]{
+a{
+  color: black;
+  text-decoration: none;
+  font-style: italic;
+}
+
+form button[type=submit]{
   margin-top: 35px;
   align-self: center;
   padding: 20px 15px;
@@ -139,11 +147,24 @@ button {
   
   font-size: 1.1rem;
   font-weight: 500;
-
+  border: 2px solid plum;
   background-color: plum;
-  border: 2px solid salmon;
+  /* border: none; */
   border-radius: 5px;
   /* width: 45%; */
+  transition: transform 0.5s linear, box-shadow 0.15s ease-in;
+  cursor: pointer;
+}
+
+button:hover {
+  /* border: 2px solid red; */
+  /* border-color: salmon; */
+  box-shadow: 2px 3px #666;
+}
+
+button:active {
+  box-shadow: 3px 4px #666;
+  transform: translateY(6px);
 }
 
 .box{
