@@ -9,7 +9,7 @@ $('#settings input[type=submit]').on('click', function (event) {
   // wait so they can see simpsons reference
   setTimeout(() => {
     getQuizArrayAndStart();
-  }, 500);
+  }, 1500);
 })
 
 
@@ -41,13 +41,15 @@ function displayQuestion() {
   if (entireQuizArray.length === 0) {
     
     $('.overlay').css('z-index', 100)
-    $('.overlay').css('background-color', 'rgba(0,0,0,0.4')
+    $('.overlay').css('background-color', 'rgba(0,0,0,0.7')
     $('.settings').css('z-index', 100)
     $('#replay').show()
 
   } else{
 
-    $('#question').text(entireQuizArray[0].question)
+    // $('#question').text(entireQuizArray[0].question)
+    $('#question').empty()
+    $('#question').append($("<h2>").text(entireQuizArray[0].question));
 
     // combine wrong answer(s) and right answer into allAnswers array, then need to shuffle with .sort() or the correct answer will always be the last one/the 4th box
     const correctAnswer = entireQuizArray[0].correct_answer;
@@ -114,11 +116,12 @@ function getQuizArrayAndStart() {
       category: $('select[name=trivia_category]').val(),     //9 to 32
       difficulty: $('select[name=trivia_difficulty]').val(), //easy, medium or hard
       type: $('select[name=trivia_type]').val(),             //multiple or boolean
-      encode: ''      //base64, url3986, '' = default encoding
+      encode: 'base64'      //base64, url3986, '' = default encoding
 
     }
   }).then(function (data) {
     entireQuizArray = data.results;
+    console.log(data.results)
     displayQuestion();
   });
 }
