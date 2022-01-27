@@ -98,9 +98,9 @@ form button,
 form select{
   margin: 2px 0 20px;
   border: 2px solid grey;
-  border-radius: 5px;
-  padding: 5px;
-  font: 1rem;
+  border-radius: 8px;
+  padding: 8px 3px;
+  font-size: 1.1rem;
 }
 
 form input[type=number]{
@@ -138,6 +138,11 @@ form button[type=submit]{
   width: 150px;
 }
 
+form input,
+form select{
+  background-color: navajowhite;
+}
+
 /* .box, */
 button { 
   border-radius: 10px;
@@ -156,15 +161,27 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+button:hover,
+button:focus {
   /* border: 2px solid red; */
   /* border-color: salmon; */
-  box-shadow: 2px 3px #666;
+  box-shadow: 2px 4px #666;
 }
 
 button:active {
   box-shadow: 3px 4px #666;
   transform: translateY(6px);
+}
+
+.difficultyOptions,
+.questionOptions{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.chosenOption{
+  background-color: navajowhite;
 }
 
 .box{
