@@ -42,16 +42,17 @@ const buttonOptions = $('.difficultyOption, .questionOption');
 buttonOptions.on('click', function (event) {
 
   event.preventDefault();
-  highlightOption(event.target.className, event)  
+  highlightOption(event.target.className, event.currentTarget)  
 })
+
 
 function highlightOption(optionClass, chosenButton) {
 
-  $(`.${optionClass}`).css('background-color', 'plum')
-  chosenButton.target.style.backgroundColor = 'navajowhite'
+  $(`.${optionClass}`).attr('class', `${optionClass}`)
+  $(chosenButton).attr('class', `${optionClass} chosenOption`)
 }
 
-// simulate click since these are default selections
+// simulate click on first diff/question type option; arbitrary default selections
 document.querySelector('.difficultyOption').click()
 document.querySelector('.questionOption').click()
 
@@ -146,6 +147,9 @@ function checkAnswer(boxObject) {
 // run only once to get quiz array from API, then call displayQuestion to show question on screen and initiate quiz
 function getQuizArrayAndStart() {
 
+  console.log($('input[name=trivia_amount]').val(), $('select[name=trivia_category]').val(), $('.difficultyOption.chosenOption').val(), $('.questionOption.chosenOption').val()
+  )
+
   $.ajax({
     url: "https://opentdb.com/api.php",
     method: "GET",
@@ -153,8 +157,8 @@ function getQuizArrayAndStart() {
     data: {
       amount: $('input[name=trivia_amount]').val(),          //any number
       category: $('select[name=trivia_category]').val(),     //9 to 32
-      difficulty: $('select[name=trivia_difficulty]').val(), //easy, medium or hard
-      type: $('select[name=trivia_type]').val(),             //multiple or boolean
+      difficulty: $('.difficultyOption.chosenOption').val(), //easy, medium or hard
+      type: $('.questionOption.chosenOption').val(),             //multiple or boolean
 
       // base64 gets rid of HTML special entities encoding error
       encode: 'base64'      //base64, url3986, '' = default encoding
