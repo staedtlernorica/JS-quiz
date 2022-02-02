@@ -12,7 +12,8 @@ $('#settings button[type=submit]').on('click', function (event) {
 
   // wait so they can see simpsons reference
   setTimeout(() => {
-    getQuizArrayAndStart();
+    // getQuizArrayAndStart();
+    fetchQuiz()
   }, 1500);
 })
 
@@ -31,7 +32,7 @@ $('.playAgain').on('click', function (event) {
 $('.viewAnswers').on('click', function (event) {
   event.preventDefault();
 
-  alert("Coming soon")
+  alert("Coming to a React/Vue version")
 
 })
 
@@ -42,7 +43,7 @@ const buttonOptions = $('.difficultyOption, .questionOption');
 buttonOptions.on('click', function (event) {
 
   event.preventDefault();
-  highlightOption(event.target.className, event.currentTarget)  
+  highlightOption(event.target.className, event.currentTarget)
 })
 
 
@@ -57,12 +58,21 @@ document.querySelector('.difficultyOption').click()
 document.querySelector('.questionOption').click()
 
 
+
+
+
+
+// =============WORK IN PROGRESS================= 
+
+
 // turn click event for answer boxes on or off (want off at certain times b/c clicking on answer box twice or more will trigger displayQuestion twice in quick succession and skips over question(s))
 function buttonClickOnOff(on) {
   on === 1 ?
     $('.box').on('click', function () { checkAnswer($(this)) }) :
     $('.box').off('click');
 }
+
+
 
 // the JSON object returned by the API
 let entireQuizArray = [];
@@ -145,33 +155,44 @@ function checkAnswer(boxObject) {
 
 
 // run only once to get quiz array from API, then call displayQuestion to show question on screen and initiate quiz
-function getQuizArrayAndStart() {
+async function fetchQuiz() {
 
-  console.log($('input[name=trivia_amount]').val(), $('select[name=trivia_category]').val(), $('.difficultyOption.chosenOption').val(), $('.questionOption.chosenOption').val()
-  )
+  //amount = any number
+  //category = 9 to 32
+  //difficulty = easy, medium or hard
+  //type = multiple or boolean
+  //base64 gets rid of HTML special entities encoding error
+  //base64, url3986, '' = default encoding
+  const userParams = new URLSearchParams({
+    amount: $('input[name=trivia_amount]').val(),
+    category: $('select[name=trivia_category]').val(),
+    difficulty: $('.difficultyOption.chosenOption').val(),
+    type: $('.questionOption.chosenOption').val(),
+    encode: 'base64'
+  }).toString()
 
-  $.ajax({
-    url: "https://opentdb.com/api.php",
-    method: "GET",
-    dataType: "json",
-    data: {
-      amount: $('input[name=trivia_amount]').val(),          //any number
-      category: $('select[name=trivia_category]').val(),     //9 to 32
-      difficulty: $('.difficultyOption.chosenOption').val(), //easy, medium or hard
-      type: $('.questionOption.chosenOption').val(),             //multiple or boolean
+  const response = await fetch(`https://opentdb.com/api.php?${userParams}`, {
+    method: 'GET', // *GET, POST, PUT, DELETE, etc.
+  })
 
-      // base64 gets rid of HTML special entities encoding error
-      encode: 'base64'      //base64, url3986, '' = default encoding
+  if (!response.ok) {
+    const message = `An error has occured: ${response.status}`;
+    throw new Error(message);
+  }
 
-    }
-  }).then(function (data) {
-    entireQuizArray = data.results;
+  // console.log(entireQuizArray)
 
-    // for tseting; remove when done
-    // entireQuizArray = test;
+  let data = await response.json()
+  entireQuizArray = await data.results
+  displayQuestion();
 
-
-    console.log(data.results)
-    displayQuestion();
-  });
+  // console.log(entireQuizArray);
 }
+
+  // return fetchQuiz()
+
+  // fetchQuiz().catch(error => {
+  //   error.message; // 'An error has occurred: 404'
+  // });
+
+
